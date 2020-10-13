@@ -53,10 +53,13 @@ const color= {
   }
 }
 
-function Token({name}) {
+function Token({name, onClick}) {
+  function handleClick() {
+    onClick(name);
+  }
 
   return (
-    <TokenStyled color= {color[name]}>
+    <TokenStyled color= {color[name]} onClick={handleClick}>
       <div class='box'>
         <img src= {objImg[name]}/>
       </div>

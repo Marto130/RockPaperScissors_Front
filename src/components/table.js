@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components'
 import Token from './token.js'
+import EmptyToken from './emptyToken.js'
 
 const TableStyled= styled.div `
 
@@ -54,12 +55,30 @@ position: relative;
 `
 
 function Table() {
+  const [playing, setState]= useState(false);
+  const [pick, setPick]= useState('');
+
+  function onClick(name) {
+    setState(true)
+    setPick(name)
+  }
+
   return (
-    <TableStyled>
-      <span className="line"></span>
-      <Token name= "paper"/>
-      <Token name= "scissors"/>
-      <Token name= "rock"/>
+    <TableStyled playing={playing}>
+    {
+      !playing ? (
+        <>
+          <span className="line"></span>
+          <Token name= "paper" onClick={onClick}/>
+          <Token name= "scissors"  onClick={onClick}/>
+          <Token name= "rock" onClick={onClick}/>
+        </>
+      ) : (<>
+          <Token name={pick} onClick={onClick}/>
+          <EmptyToken/>
+          </>
+        )
+    }
     </TableStyled>
   )
 }
