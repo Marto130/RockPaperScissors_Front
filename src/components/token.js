@@ -56,8 +56,11 @@ const color= {
 
 function Token({name, onClick}) {
   function handleClick() {
-    onClick(name);
+    if(onClick){
+      onClick(name);
+    }
   }
+
 
   return (
     <TokenStyled color= {color[name]} onClick={handleClick}>

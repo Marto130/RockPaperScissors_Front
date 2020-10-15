@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {createContext, useState} from 'react';
 import Header from './components/header.js';
 import Wrapper from './components/wrapper.js';
 import Table from './components/table.js';
@@ -7,6 +7,8 @@ import Rules from './components/rules.js';
 import styled from 'styled-components';
 
 //---------------------------------------------------
+
+export const ScoreContext= createContext();
 
 const AppStyled = styled.main`
 
@@ -29,7 +31,9 @@ const AppStyled = styled.main`
   `
 
 function App() {
+  const [score, setScore]= useState(0)
   return (
+  <ScoreContext.Provider value={{score, setScore}}>
     <AppStyled>
       <Wrapper>
         <div className= "app-content">
@@ -39,6 +43,7 @@ function App() {
         </div>
       </Wrapper>
     </AppStyled>
+  </ScoreContext.Provider>
   );
 }
 

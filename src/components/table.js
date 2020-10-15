@@ -1,9 +1,11 @@
-import React, {useState} from 'react';
-import styled from 'styled-components'
+import React, {useState, useContext} from 'react';
+import {ScoreContext} from '../App.js'
 import Token from './token.js'
 import EmptyToken from './emptyToken.js';
 import {WhiteButton} from './button.js';
 import {results} from '../functions.js'
+import styled from 'styled-components'
+
 
 const TableStyled= styled.div `;
 
@@ -78,6 +80,7 @@ function Table() {
   const [pick, setPick]= useState('');
   const [player2Pick, setPlayer2Pick]= useState('');
   const [result, setResult]= useState('')
+  const {score, setScore} = useContext(ScoreContext);
 
 
 function getRandom(min, max) {
@@ -91,7 +94,7 @@ function launchPlayer2Pick() {
   const interval= setInterval(()=>{
                   pick2 = elements[getRandom(0, 3)];
                   const p2= setPlayer2Pick(pick2)
-  }, 75)
+  }, 80)
 
   setTimeout(()=>{
               clearInterval(interval);
@@ -112,8 +115,13 @@ async function onClick(name) {
     const res= results(name, await p2);
 
     setResult(res)
+    console.log(res);
+    if (res==='you win!') {
 
-}
+      setScore(score + 1)
+    }
+  }
+
 
 
   function handleTryAgainClick() {
@@ -131,7 +139,7 @@ async function onClick(name) {
           <Token name= "rock" onClick={onClick}/>
         </>
       ) : (<>
-              <Token name={pick} onClick={onClick}/>
+              <Token name={pick}/>
               {
                 !player2Pick ? <EmptyToken/> :
                   <Token name={player2Pick}/>    }
