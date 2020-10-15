@@ -5,7 +5,6 @@ import rock from '../images/icon-rock.svg'
 import scissors from '../images/icon-scissors.svg'
 import paper from '../images/icon-paper.svg'
 
-const objImg= {rock: rock, scissors:scissors, paper: paper};
 
 const TokenStyled= styled.div `
   width: 95px;
@@ -35,6 +34,7 @@ const TokenStyled= styled.div `
 }
 
 `
+const objImg= {rock: rock, scissors:scissors, paper: paper};
 
 const color= {
   paper: {
@@ -50,7 +50,8 @@ const color= {
   scissors: {
     base: '#eca81e',
     border: '#c76c14'
-  }
+  },
+
 }
 
 function Token({name, onClick}) {
@@ -61,7 +62,7 @@ function Token({name, onClick}) {
   return (
     <TokenStyled color= {color[name]} onClick={handleClick}>
       <div class='box'>
-        <img src= {objImg[name]}/>
+        <img src= {objImg[name]} alt=""/>
       </div>
 
     </TokenStyled>

@@ -1,6 +1,4 @@
 import React from 'react';
-
-// import './App.css';
 import Header from './components/header.js';
 import Wrapper from './components/wrapper.js';
 import Table from './components/table.js';
@@ -11,9 +9,12 @@ import styled from 'styled-components';
 //---------------------------------------------------
 
 const AppStyled = styled.main`
+
   background-image: radial-gradient(circle at top, #1f3757 20%, #131537 100%);
   font-family: 'Barlow Semi Condensed', 'sans-serif';
   color: white;
+
+
 
   .app-content {
     padding: 2em;
@@ -22,6 +23,8 @@ const AppStyled = styled.main`
     box-sizing: border-box;
     flex-direction: column;
     justify-content: space-between;
+
+
   }
   `
 

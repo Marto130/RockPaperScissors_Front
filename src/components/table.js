@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
 import styled from 'styled-components'
 import Token from './token.js'
-import EmptyToken from './emptyToken.js'
+import EmptyToken from './emptyToken.js';
+import {WhiteButton} from './button.js';
+import {results} from '../functions.js'
 
-const TableStyled= styled.div `
+const TableStyled= styled.div `;
 
 display: grid;
 grid-template-columns: 110px 110px;
@@ -12,6 +14,11 @@ justify-items: center;
 grid-gap: 20px 70px;
 margin: 2 em 0;
 position: relative;
+
+P {
+  font-size: 12px;
+  letter-spacing: 1px;
+}
 
 & div:nth-of-type(3) {
   grid-column: span 2;
@@ -52,15 +59,65 @@ position: relative;
   }
 }
 
+.results {
+  text-align: center;
+  text-transform: uppercase;
+
+}
+
 `
 
-function Table() {
-  const [playing, setState]= useState(false);
-  const [pick, setPick]= useState('');
+const elements= [
+  'paper',
+  'scissors',
+  'rock'
+]
 
-  function onClick(name) {
-    setState(true)
+function Table() {
+  const [playing, setPlaying]= useState(false);
+  const [pick, setPick]= useState('');
+  const [player2Pick, setPlayer2Pick]= useState('');
+  const [result, setResult]= useState('')
+
+
+function getRandom(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+
+function launchPlayer2Pick() {
+  return new Promise((resolve, reject)=>{
+    let pick2;
+  const interval= setInterval(()=>{
+                  pick2 = elements[getRandom(0, 3)];
+                  const p2= setPlayer2Pick(pick2)
+  }, 75)
+
+  setTimeout(()=>{
+              clearInterval(interval);
+              resolve(pick2);
+  }, 2000)
+
+})
+
+}
+
+
+async function onClick(name) {
+    setResult('');
+    setPlaying(true)
     setPick(name)
+
+    const p2=  await launchPlayer2Pick();
+    const res= results(name, await p2);
+
+    setResult(res)
+
+}
+
+
+  function handleTryAgainClick() {
+    setPlaying(false);
   }
 
   return (
@@ -74,14 +131,27 @@ function Table() {
           <Token name= "rock" onClick={onClick}/>
         </>
       ) : (<>
-          <Token name={pick} onClick={onClick}/>
-          <EmptyToken/>
-          </>
-        )
+              <Token name={pick} onClick={onClick}/>
+              {
+                !player2Pick ? <EmptyToken/> :
+                  <Token name={player2Pick}/>    }
+
+              <p>YOU PICKED</p>
+              <p>PLAYER 2 PICKED</p>
+
+              <div className="results">
+                  <h2>{result}</h2>
+
+                  <WhiteButton onClick={handleTryAgainClick}>
+                  TRY AGAIN
+                  </WhiteButton>
+              </div>
+            </>
+          )
     }
-    </TableStyled>
-  )
-}
+      </TableStyled>
+    )
+  }
 
 
-export default Table;
+  export default Table;

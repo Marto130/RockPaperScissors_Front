@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components'
 
 
-const ButtonStyled= styled.div `
+ const ButtonStyled= styled.div `
   display: inline-flex;
   border: 1px solid white;
   border-radius: .5em;
@@ -14,13 +14,20 @@ const ButtonStyled= styled.div `
   text-transform: uppercase;
   letter-spacing: 2.5px;
   `
-function Button({...props}) {
+
+ const WhiteButton = styled(ButtonStyled)
+`
+background: white;
+color: #101a3f;
+min-width: 220px;
+`
+function Button({children,...props}) {
   return (
     <ButtonStyled {...props}>
-      Rules
+      {children}
     </ButtonStyled>
   )
 }
 
 
-export default Button;
+export {Button, WhiteButton};

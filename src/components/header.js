@@ -22,6 +22,8 @@ const HeaderStyled= styled.div `
 `
 
 function Header() {
+  // const [score, setScore] = useState(0);
+
   return (
     <HeaderStyled>
       <h1>

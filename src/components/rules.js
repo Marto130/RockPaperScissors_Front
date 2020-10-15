@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import imgRules from '../images/image-rules.svg'
 import imgCloseBtn from '../images/icon-close.svg'
 
-import Button from './button.js'
+import {Button} from './button.js';
 
 const RulesStyled= styled.div `
   text-align: center;
@@ -63,7 +63,9 @@ function Rules() {
         )
       }
 
-      <Button onClick={handleToggleClick}/>
+      <Button onClick={handleToggleClick}>
+      RULES
+      </Button>
     </RulesStyled>
   )
 }
