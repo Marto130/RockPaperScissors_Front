@@ -1,14 +1,26 @@
 import React from 'react';
-import styled from 'styled-components'
+import styled, {keyframes} from 'styled-components'
 
 import rock from '../images/icon-rock.svg'
 import scissors from '../images/icon-scissors.svg'
 import paper from '../images/icon-paper.svg'
 
+const buttonAnimation= keyframes`
+  to {
+    box-shadow: 0 0 0 30px rgba(255,255, 255, 0.04), 0 0 0 60px rgba(255,255, 255, .03), 0 0 0 90px rgba(255,255, 255, .02);
+    transform: rotateY(365deg) scale(1.2);
+  }
+`
+
+const boxAnimation= keyframes`
+  to {
+    transform: rotateZ(360deg) scale(1.1);
+  }
+`
 
 const TokenStyled= styled.div `
-  width: 95px;
-  height: 90px;
+  width: 80px;
+  height: 75px;
   background: white;
   border: 18px solid ${(props)=> props.color.base};
   border-radius: 50%;
@@ -18,6 +30,8 @@ const TokenStyled= styled.div `
   align-items: center;
   cursor: pointer;
   z-index: 2;
+
+  animation: 1.5s ${({lightButtonEffect})=> lightButtonEffect ? buttonAnimation : ''} forwards;
 
   &:active {
     transform: scale(.9);
@@ -31,8 +45,25 @@ const TokenStyled= styled.div `
      display: flex;
      justify-content: center;
      align-items: center;
+
+     img{
+       animation: 1s ${({lightButtonEffect})=> lightButtonEffect ? boxAnimation : ''} forwards;
+     }
 }
 
+@media screen and (min-width: 768px){
+  width: 175px;
+  height: 170px;
+  border: 30px solid ${(props)=> props.color.base};
+
+  .box {
+    box-shadow: 0 -10px 0 #BABFD4;
+    box-shadow: 0 -10px 0 #BABFD4;
+  img {
+    width: 6em;
+  }
+  }
+}
 `
 const objImg= {rock: rock, scissors:scissors, paper: paper};
 
@@ -54,7 +85,7 @@ const color= {
 
 }
 
-function Token({name, onClick}) {
+function Token({name, onClick, lightButtonEffect= false }) {
   function handleClick() {
     if(onClick){
       onClick(name);
@@ -63,8 +94,8 @@ function Token({name, onClick}) {
 
 
   return (
-    <TokenStyled color= {color[name]} onClick={handleClick}>
-      <div class='box'>
+    <TokenStyled color= {color[name]} onClick={handleClick} lightButtonEffect={lightButtonEffect} >
+      <div className='box'>
         <img src= {objImg[name]} alt=""/>
       </div>
 

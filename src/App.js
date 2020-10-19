@@ -11,7 +11,7 @@ import styled from 'styled-components';
 export const ScoreContext= createContext();
 
 const AppStyled = styled.main`
-
+  box-sizing: border-box;
   background-image: radial-gradient(circle at top, #1f3757 20%, #131537 100%);
   font-family: 'Barlow Semi Condensed', 'sans-serif';
   color: white;
@@ -19,15 +19,16 @@ const AppStyled = styled.main`
 
 
   .app-content {
-    padding: 2em;
+    box-sizing: border-box;
+    padding: 2rem;
     min-height: 100vh;
     display: flex;
-    box-sizing: border-box;
     flex-direction: column;
     justify-content: space-between;
 
 
   }
+
   `
 
 function App() {

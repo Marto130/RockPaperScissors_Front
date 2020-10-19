@@ -32,7 +32,7 @@ function EmptyToken() {
 
   return (
     <EmptyTokenStyled>
-      <div class='box'>
+      <div className='box'>
       </div>
     </EmptyTokenStyled>
   )

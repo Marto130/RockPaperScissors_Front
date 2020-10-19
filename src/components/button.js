@@ -13,14 +13,20 @@ import styled from 'styled-components'
   cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 2.5px;
+
+  :hover {
+    background: white;
+    color: #101a3f
+  }
   `
 
- const WhiteButton = styled(ButtonStyled)
-`
+ const WhiteButton = styled(ButtonStyled)`
 background: white;
 color: #101a3f;
 min-width: 220px;
 `
+
+
 function Button({children,...props}) {
   return (
     <ButtonStyled {...props}>
