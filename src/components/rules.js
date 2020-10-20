@@ -57,8 +57,6 @@ const RulesStyled= styled.div `
 
   @media screen and (min-width: 1024px) {
 
-
-
     .buttonRules {
       position: fixed;
       right: 2.5em;

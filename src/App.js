@@ -16,7 +16,11 @@ const AppStyled = styled.main`
   font-family: 'Barlow Semi Condensed', 'sans-serif';
   color: white;
 
-
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer */
+  -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
+  -webkit-user-select: none; /* Chrome, Safari, and Opera */
+  -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
 
   .app-content {
     box-sizing: border-box;

@@ -71,7 +71,7 @@ P {
 }
 @media screen and (min-width: 768px) {
 grid-gap: 50px 250px;
-${({playing}) => playing && 'grid-template-columns: 170px 170px 170px  170px; grid-gap: 0 50px;'}
+${({playing}) => playing && 'grid-template-columns: 1fr 1fr 1fr 1fr; grid-gap: 40px 50px;'}
 
   & div:nth-of-type(1) {
      ${({playing}) => playing && `grid-column: 1/span 1;
@@ -109,14 +109,22 @@ ${({playing}) => playing && 'grid-template-columns: 170px 170px 170px  170px; gr
   p {
 
       width: 10em;
-      font-size: 1em;
+      font-size: 1.2em;
       text-align: center;
 
       padding: 0;
       position: relative;
       bottom: 370px;
 
+
   }
+
+  & p:nth-of-type(2) {
+    left: 23em;
+  }
+
+
+
 }
 `
 
@@ -127,50 +135,50 @@ const elements= [
 ]
 
 function Table() {
-  const [playing, setPlaying]= useState(false);
-  const [pick, setPick]= useState('');
-  const [player2Pick, setPlayer2Pick]= useState('');
-  const [result, setResult]= useState('')
-  const {score, setScore} = useContext(ScoreContext);
+
+const [playing, setPlaying]= useState(false);
+const [pick, setPick]= useState('');
+const [player2Pick, setPlayer2Pick]= useState('');
+const [result, setResult]= useState('')
+const {score, setScore} = useContext(ScoreContext);
 
 
-function getRandom(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
-}
-
-
-function launchPlayer2Pick() {
-  return new Promise((resolve, reject)=>{
-    let pick2;
-  const interval= setInterval(()=>{
-                  pick2 = elements[getRandom(0, 3)];
-                  setPlayer2Pick(pick2)
-  }, 80)
-
-  setTimeout(()=>{
-              clearInterval(interval);
-              resolve(pick2);
-  }, 2000)
-
-})
-
-}
-
-
-async function onClick(name) {
-    // setResult('');
-    setPlaying(true)
-    setPick(name)
-
-    const p2=  await launchPlayer2Pick();
-    const res= results(name, await p2);
-
-    setResult(res)
-
-     if (res==='you win!') {
-      setScore(score + 1)
-    }
+  function getRandom(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
   }
+
+
+  function launchPlayer2Pick() {
+    return new Promise((resolve, reject) => {
+      let pick2;
+      const interval = setInterval(() => {
+        pick2 = elements[getRandom(0, 3)];
+        setPlayer2Pick(pick2)
+      }, 80)
+
+      setTimeout(() => {
+        clearInterval(interval);
+        resolve(pick2);
+      }, 2000)
+
+    })
+  }
+
+
+  async function onClick(name) {
+      // setResult('');
+      setPlaying(true)
+      setPick(name)
+
+      const p2=  await launchPlayer2Pick();
+      const res= results(name, await p2);
+
+      setResult(res)
+
+       if (res==='you win!') {
+        setScore(score + 1)
+      }
+    }
 
 
   function handleTryAgainClick() {
@@ -179,6 +187,7 @@ async function onClick(name) {
 
   }
 
+//------------------------------------------------------------------------------
   return (
     <TableStyled playing={playing}>
     {

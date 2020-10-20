@@ -31,7 +31,7 @@ const TokenStyled= styled.div `
   cursor: pointer;
   z-index: 2;
 
-  animation: 1.5s ${({lightButtonEffect})=> lightButtonEffect ? buttonAnimation : ''} forwards;
+  animation: 1.5s ${(props)=> props.lightButtonEffect ? buttonAnimation : ''} forwards;
 
   &:active {
     transform: scale(.9);
@@ -86,12 +86,14 @@ const color= {
 }
 
 function Token({name, onClick, lightButtonEffect= false }) {
+
   function handleClick() {
     if(onClick){
       onClick(name);
-    }
-  }
 
+    }
+
+  }
 
   return (
     <TokenStyled color= {color[name]} onClick={handleClick} lightButtonEffect={lightButtonEffect} >
