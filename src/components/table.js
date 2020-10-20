@@ -30,7 +30,6 @@ P {
   background: rgba(0,0,0,.2);
   position: absolute;
   width: 190px;
-
   margin: 60px;
 
   &:before {
@@ -69,64 +68,56 @@ P {
 
 
 }
+
+
 @media screen and (min-width: 768px) {
-grid-gap: 50px 250px;
-${({playing}) => playing && 'grid-template-columns: 1fr 1fr 1fr 1fr; grid-gap: 40px 50px;'}
+  grid-gap: 50px 250px;
+  ${({playing}) => playing && 'grid-template-columns: 1fr 1fr 1fr 1fr; grid-gap: 40px 50px;'}
 
-  & div:nth-of-type(1) {
-     ${({playing}) => playing && `grid-column: 1/span 1;
-
-                                  `}
-  }
-
-  & div:nth-of-type(2) {
-    ${({playing}) => playing && `grid-column: 4/span 1;
-
-                                `}
-  }
-
-  & div:nth-of-type(3) {
-     ${({playing}) => (playing) && `grid-column: 2/span 2;
-                                                      grid-row: 2/1;
-
-                                                      `}
-  }
-
-
-  .line {
-    width: 460px;
-    height: 20px;
-    margin: 90px;
-
-    &:before {
-      height: 20px;
+    & div:nth-of-type(1) {
+       ${({playing}) => playing && `grid-column: 1/span 1;`}
     }
-    &:after {
+
+    & div:nth-of-type(2) {
+      ${({playing}) => playing && `grid-column: 4/span 1;`}
+    }
+
+    & div:nth-of-type(3) {
+       ${({playing}) => (playing) && `grid-column: 2/span 2;
+                                      grid-row: 2/1;`}
+    }
+
+
+    .line {
+      width: 460px;
       height: 20px;
+      margin: 90px;
+
+      &:before {
+        height: 20px;
+      }
+      &:after {
+        height: 20px;
+      }
+    }
+
+    p {
+        width: 10em;
+        font-size: 1.2em;
+        text-align: center;
+
+        padding: 0;
+        position: relative;
+        bottom: 370px;
+      }
+
+    & p:nth-of-type(2) {
+      left: 23em;
     }
   }
+  `
 
-  p {
-
-      width: 10em;
-      font-size: 1.2em;
-      text-align: center;
-
-      padding: 0;
-      position: relative;
-      bottom: 370px;
-
-
-  }
-
-  & p:nth-of-type(2) {
-    left: 23em;
-  }
-
-
-
-}
-`
+//-----------------------------------------------------------------------
 
 const elements= [
   'paper',
@@ -135,7 +126,6 @@ const elements= [
 ]
 
 function Table() {
-
 const [playing, setPlaying]= useState(false);
 const [pick, setPick]= useState('');
 const [player2Pick, setPlayer2Pick]= useState('');
@@ -184,10 +174,9 @@ const {score, setScore} = useContext(ScoreContext);
   function handleTryAgainClick() {
     setResult('')
     setPlaying(false);
-
   }
 
-//------------------------------------------------------------------------------
+
   return (
     <TableStyled playing={playing}>
     {

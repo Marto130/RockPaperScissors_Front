@@ -29,11 +29,11 @@ const AppStyled = styled.main`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
-
   }
 
   `
+
+
 
 function App() {
   const [score, setScore]= useState(0)
