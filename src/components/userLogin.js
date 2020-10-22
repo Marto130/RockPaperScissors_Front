@@ -1,22 +1,51 @@
 import React from 'react';
-import styled from 'styled-component';
+import styled from 'styled-components';
 
 
 
 const FormStyled= styled.form`
 
 background: transparent;
-display: block;
-margin: auto;
+height: 100vh;
+width: 100%;
+
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+
 
 input {
-  width: 300px;
-  margin: auto;
+  width: 250px;
+  height: 3em;
+  border: none;
+  border-radius: 5px;
+  margin: 1em 1em;
+  text-align: center;
+  font-size: 1em;
+  outline: none;
+
+  &::placeholder {
+
+    font-size: 1em;
+    text-align: center;
+
+  }
 }
 
 button {
-  width: 300pc;
-  margin: auto;
+  background: rgb(151, 117, 212);
+  width: 150px;
+  height: 3em;
+  border: none;
+  border-radius: 3px;
+  margin: 1em 1em;
+  color: white;
+
+
+  &:hover {
+    background: rgb(106, 47, 213);
+  }
 }
 
 `
@@ -32,14 +61,14 @@ function handleSumbmitLogin() {
 function FormLogin() {
 
 return (
-
+<>
   <FormStyled>
-    <form>
-      <input type='text' placeholder='username'></input>
-      <button type='submit' onSubmit= {handleSumbmitLogin}>LogIn</button>
-    </form>
-  </FormStyled>
 
+      <input type='text' placeholder='Username'></input>
+      <button type='submit' onSubmit= {handleSumbmitLogin}>LogIn</button>
+
+  </FormStyled>
+</>
 )
 
 }
