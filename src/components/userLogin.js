@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-
+import {Link} from 'react-router-dom';
 
 const FormStyled= styled.form`
 
@@ -50,11 +50,12 @@ button {
 
 `
 
-function handleSumbmitLogin() {
-
+function handleSumbmitLogin(event) {
+event.preventDefault();
+const form = document.querySelector('input').parentElement;
+const formData = new FormData(form);
+console.log(formData.get('userName'));
 }
-
-
 
 
 
@@ -63,10 +64,10 @@ function FormLogin() {
 return (
 <>
   <FormStyled>
-
-      <input type='text' placeholder='Username'></input>
-      <button type='submit' onSubmit= {handleSumbmitLogin}>LogIn</button>
-
+      <input type="text" name= "userName" placeholder="Username"></input>
+      <button type="button" onClick= {handleSumbmitLogin}>
+      Login
+      </button>
   </FormStyled>
 </>
 )
