@@ -6,6 +6,8 @@ import Rules from './components/rules.js';
 
 import styled from 'styled-components';
 
+import io from 'socket.io-client';
+
 //---------------------------------------------------
 
 export const ScoreContext= createContext();
@@ -34,9 +36,12 @@ const AppStyled = styled.main`
   `
 
 
+const socket= io.connect('http://localhost:7000/', {'forceNew': true});
 
 function App() {
   const [score, setScore]= useState(0)
+
+
   return (
   <ScoreContext.Provider value={{score, setScore}}>
     <AppStyled>
