@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
 
-import {Link} from 'react-router-dom';
+import {WhiteButton} from './button.js';
 
 const FormStyled= styled.form`
 
@@ -65,9 +66,13 @@ return (
 <>
   <FormStyled>
       <input type="text" name= "userName" placeholder="Username"></input>
-      <button type="button" onClick= {handleSumbmitLogin}>
-      Login
-      </button>
+
+        <WhiteButton onClick= {handleSumbmitLogin}>
+          <Link to= "/" style={{textDecoration:'none'}}>
+            Login
+          </Link>
+        </WhiteButton>
+
   </FormStyled>
 </>
 )
