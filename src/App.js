@@ -3,6 +3,10 @@ import Header from './components/header.js';
 import Wrapper from './components/wrapper.js';
 import Table from './components/table.js';
 import Rules from './components/rules.js';
+import FormLogin from './components/userLogin.js';
+
+
+import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
 
 import styled from 'styled-components';
 
@@ -43,17 +47,26 @@ function App() {
 
 
   return (
-  <ScoreContext.Provider value={{score, setScore}}>
-    <AppStyled>
-      <Wrapper>
-        <div className= "app-content">
-          <Header/>
-          <Table/>
-          <Rules/>
-        </div>
-      </Wrapper>
-    </AppStyled>
-  </ScoreContext.Provider>
+    <Router>
+      <ScoreContext.Provider value={{score, setScore}}>
+        <AppStyled>
+          <Wrapper>
+            <Switch>
+              <Route exact path='/'>
+                  <div className= "app-content">
+                    <Header/>
+                    <Table/>
+                    <Rules/>
+                  </div>
+              </Route>
+              <Route exact path='/login'>
+                <FormLogin/>
+              </Route>
+            </Switch>
+          </Wrapper>
+        </AppStyled>
+      </ScoreContext.Provider>
+  </Router>
   );
 }
 
