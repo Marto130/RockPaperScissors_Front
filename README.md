@@ -19,8 +19,8 @@ add img
 3 minutes ago 
 
 
-<img src="img/Captura de pantalla de 2020-10-27 19-52-56.png" width="500" height="200"/>
-<img src="img/Captura de pantalla de 2020-10-27 19-53-21.png" width="500" height="200"/>
+<img src="img/Captura de pantalla de 2020-10-27 19-52-56.png" width="400" height="200"/>
+<img src="img/Captura de pantalla de 2020-10-27 19-53-21.png" width="400" height="200"/>
 <img src="img/Captura de pantalla de 2020-10-27 20-00-00.png" width="300" height="500"/>
 <img src="img/Captura de pantalla de 2020-10-27 20-01-06.png" width="300" height="500"/>
 
