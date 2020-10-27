@@ -1,7 +1,7 @@
 
 # RockPaperSissors Game (front)
 
-- Juego piedra, papel, o tijera responsive 365/768/1024
+Juego piedra, papel, o tijera responsive 365/768/1024
 
 ## Tecnologías
 Reactjs, Styled Components.
