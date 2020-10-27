@@ -70,7 +70,7 @@ socket.on('token', (data)=>{
 
 
 function FormLogin() {
-
+///////////////////////////////////
 return (
 <>
   <FormStyled>
