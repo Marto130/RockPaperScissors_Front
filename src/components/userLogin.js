@@ -1,8 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 import {WhiteButton} from './button.js';
+
+import {socket} from '../socketManage.js';
+
+
 
 const FormStyled= styled.form`
 
@@ -56,8 +60,13 @@ event.preventDefault();
 const form = document.querySelector('input').parentElement;
 const formData = new FormData(form);
 console.log(formData.get('userName'));
+
+socket.emit('login', formData.get('userName'))
 }
 
+socket.on('token', (data)=>{
+  console.log(data);
+})
 
 
 function FormLogin() {

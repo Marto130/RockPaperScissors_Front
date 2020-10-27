@@ -6,11 +6,9 @@ import Rules from './components/rules.js';
 import FormLogin from './components/userLogin.js';
 
 
-import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import styled from 'styled-components';
-
-import io from 'socket.io-client';
 
 //---------------------------------------------------
 
@@ -40,7 +38,6 @@ const AppStyled = styled.main`
   `
 
 
-const socket= io.connect('http://localhost:7000/', {'forceNew': true});
 
 function App() {
   const [score, setScore]= useState(0)
