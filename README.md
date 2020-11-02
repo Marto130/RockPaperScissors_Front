@@ -1,5 +1,5 @@
 
-# RockPaperSissors Game (front)
+# RockPaperSissors Game (Frontend Mentor)
 
 Juego piedra, papel, o tijera responsive 365/768/1024
 
